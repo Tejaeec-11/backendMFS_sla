@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login + Admin Check</title>
+</head>
+<body>
+    <script>
+      let isLoggedIn = true;
+let isAdmin = false;
+
+if (isLoggedIn === true && isAdmin === true) {
+    console.log("Admin Dashboard");
+} else if (isLoggedIn === true && isAdmin === false) {
+    console.log("User Dashboard");
+} else {
+    console.log("Please Login");
+}  
+
+//Situation 1: true, true → Admin Dashboard
+
+
+
+//Situation 2: true, false → User Dashboard
+
+
+
+//Situation 3: false, false → Please Login
+    </script>
+</body>
+</html>
