@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Object spread copies the original object's</title>
+</head>
+<body>
+    <h2>Copy and Update User</h2>
+
+    <script>
+        const user = {
+            name: "Bala",
+            age: 25,
+            role: "Developer"
+        };
+
+        const updatedUser = {
+            ...user,
+            age: 26,
+            role: "Senior Developer"
+        };
+
+        console.log("Original:");
+        console.log(user.name);
+        console.log(user.age);
+        console.log(user.role);
+
+        console.log("Updated:");
+        console.log(updatedUser.name);
+        console.log(updatedUser.age);
+        console.log(updatedUser.role);
+    </script>
+</body>
+</html>

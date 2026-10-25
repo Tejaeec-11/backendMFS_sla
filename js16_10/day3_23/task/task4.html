@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Object destructuring</title>
+</head>
+<body>
+    <h2>Student Profile</h2>
+
+    <script>
+        const student = {
+            name: "Bala",
+            age: 25,
+            course: "JavaScript",
+            city: "Chennai"
+        };
+
+        const printStudent = ({ name, age, course, city }) => {
+            console.log(`Student: ${name}`);
+            console.log(`Age: ${age}`);
+            console.log(`Course: ${course}`);
+            console.log(`City: ${city}`);
+        };
+
+        printStudent(student);
+    </script>
+</body>
+</html>

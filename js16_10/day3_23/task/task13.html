@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 13</title>
+</head>
+<body>
+    <h2>Login System</h2>
+
+    <script>
+        const user = {
+            name: "Bala",
+            role: "Admin",
+            isLoggedIn: true
+        };
+
+        const checkLogin = ({ name, role, isLoggedIn }) => {
+            if (isLoggedIn) {
+                console.log(`Welcome ${name}`);
+                console.log(`Role: ${role}`);
+            } else {
+                console.log("Please Login");
+            }
+        };
+
+        checkLogin(user);
+
+        const guest = {
+            name: "Arun",
+            role: "User",
+            isLoggedIn: false
+        };
+
+        checkLogin(guest);
+    </script>
+</body>
+</html>

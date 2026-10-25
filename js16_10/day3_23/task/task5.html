@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Destructuring</title>
+</head>
+<body>
+    <h2>Product Price Calculator</h2>
+
+    <script>
+        const product = {
+            name: "Laptop",
+            price: 60000,
+            quantity: 2
+        };
+
+        const calculatePrice = ({ name, price, quantity }) => {
+            const total = price * quantity;
+
+            console.log(`${name}`);
+            console.log(`Price: ${price}`);
+            console.log(`Quantity: ${quantity}`);
+            console.log(`Total: ${total}`);
+        };
+
+        calculatePrice(product);
+
+
+
+        //Task 1–5: Template literals, arrow functions and destructuring
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 15</title>
+</head>
+<body>
+    <h2>User Profile System</h2>
+  <!--
+    Task 15's updateUser() uses a shallow copy. That is enough for changing the top-level age and role properties without changing the original user. If you later modify a nested address property,
+    
+    Interview points:
+- getUserName() uses destructuring to extract the name.
+- getUserLocation() uses optional chaining and nullish coalescing for a safe fallback.
+- getUserMessage() combines destructuring with a template literal.
+- updateUser() uses object spread to create a new object.
+- printUsers() uses for...of and destructuring to print each user's details.-->
+    <script>
+        const user = {
+            name: "Bala",
+            age: 25,
+            role: "Frontend Developer",
+            address: {
+                city: "Chennai"
+            }
+        };
+
+        // Function 1: Get user name
+        const getUserName = ({ name }) => {
+            return name;
+        };
+
+        // Function 2: Get user location
+        const getUserLocation = (user) => {
+            return user.address?.city ?? "Unknown";
+        };
+
+        // Function 3: Get user message
+        const getUserMessage = ({
+            name,
+            age,
+            role,
+            address
+        }) => {
+            const city = address?.city ?? "Unknown";
+
+            return `${name} is a ${age} year old ${role} from ${city}.`;
+        };
+
+        // Function 4: Update user without changing original
+        const updateUser = (user) => {
+            return {
+                ...user,
+                age: 26,
+                role: "Senior Frontend Developer"
+            };
+        };
+
+        // Function 5: Print all users
+        const users = [
+            user,
+            {
+                name: "Arun",
+                age: 30,
+                role: "Backend Developer"
+            },
+            {
+                name: "Kumar",
+                age: 28,
+                role: "Tester"
+            }
+        ];
+
+        const printUsers = (users) => {
+            for (const { name, role } of users) {
+                console.log(`${name} - ${role}`);
+            }
+        };
+
+        console.log("User Name:", getUserName(user));
+        console.log("User Location:", getUserLocation(user));
+        console.log(getUserMessage(user));
+
+        const updatedUser = updateUser(user);
+
+        console.log("Original Age:", user.age);
+        console.log("Updated Age:", updatedUser.age);
+        console.log("Original Role:", user.role);
+        console.log("Updated Role:", updatedUser.role);
+
+        printUsers(users);
+    </script>
+</body>
+</html>
+

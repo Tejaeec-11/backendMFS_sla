@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Default parameters</title>
+</head>
+<body>
+    <h2>User Details</h2>
+
+    <script>
+        const createUser = (
+            name = "Guest",
+            age = 18,
+            city = "Unknown"
+        ) => {
+            return `${name}
+${age}
+${city}`;
+        };
+
+        console.log(createUser("Bala", 25, "Chennai"));
+        console.log(createUser("Bala"));
+    </script>
+</body>
+</html>
