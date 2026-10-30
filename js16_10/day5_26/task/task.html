@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript ES6 Array Methods</title>
+</head>
+<body>
+
+    <h1>JavaScript Array Methods</h1>
+
+    <script>
+        // 1. some() - Check if any number is greater than 35
+        let numbers = [10, 20, 30, 40];
+
+        let result1 = numbers.some(num => num > 35);
+
+        console.log("1. some():", result1);
+
+
+        // 2. every() - Check if all students scored above 50
+        let marks = [60, 75, 80, 90, 55];
+
+        let result2 = marks.every(mark => mark > 50);
+
+        console.log("2. every():", result2);
+
+
+        // 3. includes() - Check whether admin exists in roles
+        let roles = ["user", "admin", "manager"];
+
+        let result3 = roles.includes("admin");
+
+        console.log("3. includes():", result3);
+
+
+        // 4. reduce() - Calculate total salary of five employees
+        let salaries = [20000, 25000, 30000, 35000, 40000];
+
+        let totalSalary = salaries.reduce((sum, salary) => sum + salary, 0);
+
+        console.log("4. Total Salary:", totalSalary);
+
+
+        // 5. Calculate shopping cart total using price * quantity
+        let cart = [
+            { price: 100, quantity: 2 },
+            { price: 200, quantity: 3 },
+            { price: 50, quantity: 4 }
+        ];
+
+        let cartTotal = cart.reduce((sum, item) => {
+            return sum + item.price * item.quantity;
+        }, 0);
+
+        console.log("5. Shopping Cart Total:", cartTotal);
+
+
+        // 6. filter() - Find employees earning more than 30000
+        let employees = [
+            { name: "Arun", salary: 25000 },
+            { name: "Bala", salary: 35000 },
+            { name: "Priya", salary: 40000 }
+        ];
+
+        let highSalary = employees.filter(emp => emp.salary > 30000);
+
+        console.log("6. Employees earning above 30000:", highSalary);
+
+
+        // 7. find() - Find a student by ID
+        let students = [
+            { id: 1, name: "Arun" },
+            { id: 2, name: "Priya" },
+            { id: 3, name: "Bala" }
+        ];
+
+        let student = students.find(student => student.id === 2);
+
+        console.log("7. Student found:", student);
+
+
+        // 8. findIndex() - Get the index of a product by ID
+        let products = [
+            { id: 101, name: "Laptop", price: 50000 },
+            { id: 102, name: "Mobile", price: 15000 },
+            { id: 103, name: "Tablet", price: 10000 }
+        ];
+
+        let productIndex = products.findIndex(product => product.id === 102);
+
+        console.log("8. Product Index:", productIndex);
+
+
+        // 9. sort() - Sort products by price from low to high
+        let sortedProducts = [...products];
+
+        sortedProducts.sort((a, b) => a.price - b.price);
+
+        console.log("9. Products sorted by price:", sortedProducts);
+
+
+        // 10. map() - Extract only employee names
+        let employeeNames = employees.map(emp => emp.name);
+
+        console.log("10. Employee Names:", employeeNames);
+
+    </script>
+
+</body>
+</html>

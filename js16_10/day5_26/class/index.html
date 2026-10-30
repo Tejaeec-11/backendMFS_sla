@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+     1.  let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+      
+           {name:"t",email:"t@gmail.com",number:"23424536667879"},
+           {name:"s",email:"s@gmail.com",number:"224556667879"} 
+      ]
+
+      const getData = a.find((e,i)=>
+      e.email==="rec@gmail.com" && 
+      e.number=="234555667879")
+      console.log(getData);
+      //find element and show in console.
+      //if  e.password==="rec@gmail.com" &&  epdi use panna undefined false value
+
+      2.  let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+               {name:"t",email:"t@gmail.com",number:"23424536667879"},
+               {name:"s",email:"s@gmail.com",number:"224556667879"} 
+      ]
+
+      const getData = a.find((e,i)=>e.email==="rec@gmail.com" && e.number=="234555667879")
+      console.log(getData);
+
+      if(getData){
+        alert(getData.email)
+      }else{
+        alert("not valid")
+      }
+      //e.number=="23455566787" try this see output
+      //e.number=="234555667879" then try this
+       //find only return true or false so we use if condition
+      3. let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+               {name:"t",email:"t@gmail.com",number:"23424536667879"},
+               {name:"s",email:"s@gmail.com",number:"224556667879"} 
+      ]
+     //spcific value map also for each but for each not able to return
+
+    const datas = a.map((e)=>e.name=="react"?e.name:console.log("not valid"))
+    console.log(datas);
+     4.let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+               {name:"react",email:"t@gmail.com",number:"23424536667879"},
+               {name:"react",email:"s@gmail.com",number:"224556667879"} 
+      ]
+     const filters = a.filter((e)=>e.name=="react")
+     console.log(filters);
+     //try  [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+     //          {name:"t",email:"t@gmail.com",number:"23424536667879"},
+     //          {name:"s",email:"s@gmail.com",number:"224556667879"} 
+     // ]
+    
+
+     // [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+    //         {name:"react",email:"t@gmail.com",number:"23424536667879"},
+      //         {name:"react",email:"s@gmail.com",number:"224556667879"} 
+     // ]
+    5. let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+               {name:"t",email:"t@gmail.com",number:"23424536667879"},
+               {name:"s",email:"s@gmail.com",number:"224556667879"} 
+      ]
+   
+     let datass = [...a]
+       let output = ""
+       datass.forEach((e,i)=>{
+        console.log(`name:${e.name}`)
+       })
+       //... use to copy
+       6.   let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+               {name:"t",email:"t@gmail.com",number:"23424536667879"},
+               {name:"s",email:"s@gmail.com",number:"224556667879"} 
+      ]
+      
+     const datas = a.some((e)=>e.name=="react") 
+     console.log(datas);
+     
+    //sum based on condition return true or false.any one co dition statifed ana true 
+      //check (e)=>e.name=="React")
+      //check (e)=>e.name=="react") 
+      7.let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+               {name:"react",email:"t@gmail.com",number:"23424536667879"},
+               {name:"react",email:"s@gmail.com",number:"224556667879"} 
+      ]
+      
+     const datas = a.every((e)=>e.name=="react") 
+     console.log(datas);
+     
+    //every stafifed all condtion 
+    // a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+     //          {name:"t",email:"t@gmail.com",number:"23424536667879"},
+       //        {name:"s",email:"s@gmail.com",number:"224556667879"} 
+      //]
+      //false
+
+      // a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+       //        {name:"react",email:"t@gmail.com",number:"23424536667879"},
+         //      {name:"react",email:"s@gmail.com",number:"224556667879"} 
+      //]
+      //true
+     8. let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+               {name:"react",email:"t@gmail.com",number:"23424536667879"},
+               {name:"react",email:"s@gmail.com",number:"224556667879"} 
+      ]
+      
+     const datas = a.every((e)=>e.name=="react") 
+     console.log(datas);
+     
+     //every satified all element  true
+      //sum satified any one element true
+      if(datas){
+       a.map((e)=>console.log(e.name)
+       )
+    }else{
+       alert("there is no duplicate")
+       }
+
+       //a.every((e)=>e.name=="react")  
+       //or 
+       //a.some
+
+
+       // let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+       //        {name:"react",email:"t@gmail.com",number:"23424536667879"},
+        //       {name:"react",email:"s@gmail.com",number:"224556667879"} 
+     // ]//true
+
+     // let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+     //          {name:"t",email:"t@gmail.com",number:"23424536667879"},
+     //          {name:"s",email:"s@gmail.com",number:"224556667879"} 
+     // ]
+      
+     9. let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+               {name:"react",email:"t@gmail.com",number:"23424536667879"},
+               {name:"react",email:"s@gmail.com",number:"224556667879"} 
+      ]
+      
+     //no conditon bring all element use map or foreach and foreach in html js bootstrap
+     //  if they ask condition above or below apo filter
+     //reach not use foreach bcoz not retrun anuthing but html u use anything
+     //includes
+     let number = [1,2,3,4,5,5,6] //arr irrutha T or F
+    const check = number.includes(1)
+    console.log(check);
+
+    //includes(1) //true
+    //includes(111) //false
+    //includes if value there true or el
+    10.      let a = [{name:"react",email:"rec@gmail.com",number:"234555667879"},
+               {name:"react",email:"t@gmail.com",number:"23424536667879"},
+               {name:"react",email:"s@gmail.com",number:"224556667879"} 
+      ]
+      
+      const arrnew = [1,2,3,4,5,6,7 ]
+        const sum = arrnew.reduce((acc,curr)=>{
+        return acc+curr
+      },0)
+     console.log(sum)
+   
+   //0+1=1,1+2=3,3+3=6,6+4=10,10+5=15,15+6=21,21+7=28
+   //  const sum = arrnew.reduce((acc,curr)=>{
+     //   return acc+curr
+     // },0)
+     //log(sum)
+     //reduce higer order array method syntax
+     //all add panni single value tharum  real time use 
+     11.  //use reduce to add total cost 
+      let a = [{product:"phone",price:200,qnt:3 },
+             {product:"milk",price:10,qnt:3 },
+            ]
+
+            const total =a.reduce((acc,curr)=>{
+                return acc + curr.price * curr.qnt
+            },0)
+            console.log(total);
+            11.array method all this 
+    </pre>
+    <script>
+      
+            
+      
+     
+
+
+    
+    </script>
+</body>
+</html>
+
