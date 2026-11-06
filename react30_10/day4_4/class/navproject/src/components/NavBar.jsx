@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
-  return (
+const NavBar = () =>{
+  return(
     <>
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Link to="/contact">Contact</Link>
-      <Link to="/services">Serives</Link>
-
+   <div className="flex shadow justify-between items-center p-4 fixed w-screen">
+    <div className="mx-15">LOGO</div>
+    <div className="mx-15 flex gap-15">
+      <Link to='/'>Home</Link>
+      <Link to='/about'>About</Link>
+      <Link to='/contact'>Contact</Link>
+      <Link to='/services'>Services</Link>
     </div>
-
+   </div>
     </>
   )
 }
-
 export default NavBar
+
