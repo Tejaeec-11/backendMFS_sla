@@ -1,10 +1,12 @@
+import NavBar from "./components/NavBar"
+import AppRoutes from "./routes/AppRoutes"
 
-
-const App = ()=>{
-  return(
-    <>
-   <div className="bg-blue-400 text-black" 
->app </div>    </>
-  )
+const App =()=>{
+    return(
+        <>
+     
+        <AppRoutes/>
+        </>
+    )
 }
-export default App 
+export default App
