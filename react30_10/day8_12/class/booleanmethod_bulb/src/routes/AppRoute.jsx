@@ -3,6 +3,7 @@ import {Routes ,Route } from 'react-router-dom'
 import NavBar from '../componentscreenotdisplay/NavBar'
 import Nullish from '../pagesdisplay/Nullish'
 import Boolean from '../pagesdisplay/Boolean'
+import Array from '../pagesdisplay/Array'
 const AppRoute = () => {
   return (<>
     <div>
