@@ -1,83 +1,62 @@
-import { useState } from "react";
+import { useState } from "react"
 
-const initialStudents = [
-  { id: 1, name: "Arun", marks: 75 },
-  { id: 2, name: "Bala", marks: 85 },
-  { id: 3, name: "Kumar", marks: 65 },
-];
+const App = () => {
+   const [student, setStudent] = useState([
+    { id: 1, name: "Arun", marks: 75 },
+    { id: 2, name: "Bala", marks: 85 },
+    { id: 3, name: "Kumar", marks: 65 }
+  ])
 
-function App() {
-  const [students, setStudents] = useState(initialStudents);
-  const [message, setMessage] = useState("");
-
-  // ADD - spread operator, prevent duplicate IDs
+  // 1. Add Student
   const handleAdd = () => {
-    const newStudent = { id: 4, name: "Priya", marks: 90 };
+  const newStudent = { id: 4, name: "Priya", marks: 90 }
+  setStudent((p)=>p.some((e) => e.id === newStudent.id)?p : [...p, newStudent])
+  }
 
-    const isDuplicate = students.some((student) => student.id === newStudent.id);
-    if (isDuplicate) {
-      setMessage(`Student with ID ${newStudent.id} already exists. Cannot add duplicate.`);
-      return;
-    }
-
-    setStudents([...students, newStudent]);
-    setMessage("Priya added successfully.");
-  };
-
-  // UPDATE - map(): change Bala's marks from 85 to 95
+  // 2. Update Student
   const handleUpdate = () => {
-    setStudents(
-      students.map((student) =>
-        student.name === "Bala" ? { ...student, marks: 95 } : student
-      )
-    );
-    setMessage("Bala's marks updated to 95.");
-  };
+  setStudent((p) =>p.map((e) =>e.id === 2 ? { ...e, marks: 95 } : e))
+  }
 
-  // DELETE - filter(): remove Kumar (ID 3)
+  // 3. Delete Student
   const handleDelete = () => {
-    setStudents(students.filter((student) => student.id !== 3));
-    setMessage("Kumar (ID 3) deleted.");
-  };
-
-  // Reset to original data
-  const handleReset = () => {
-    setStudents(initialStudents);
-    setMessage("List reset to original data.");
-  };
+  setStudent((p) =>p.filter((e) => e.id !== 3))
+  }
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1>Task 3: Student Records - Add, Update and Delete</h1>
+    <>
+      <div className="bg-black text-white flex flex-col gap-5 p-10 items-center">
+      <h1>Student Records</h1>
+      {student.map((e, i) => (
+        <div key={e.id} className="bg-gray-700 p-5 rounded flex gap-5">
+            <h3>ID: {e.id}</h3>
+            <h3>Name: {e.name}</h3>
+            <p>Marks: {e.marks}</p>
+          </div>
+        ))}
 
-      <button onClick={handleAdd} style={{ marginRight: "10px" }}>
-        Add Priya
-      </button>
-      <button onClick={handleUpdate} style={{ marginRight: "10px" }}>
-        Update Bala's Marks to 95
-      </button>
-      <button onClick={handleDelete} style={{ marginRight: "10px" }}>
-        Delete Kumar
-      </button>
-      <button onClick={handleReset}>Reset</button>
-
-      {message && <p style={{ fontWeight: "bold" }}>{message}</p>}
-
-      <h2>Student List</h2>
-      {students.length === 0 ? (
-        <p>No students available.</p>
-      ) : (
-        <ul>
-          {/* map() - display all students */}
-          {students.map((student) => (
-            <li key={student.id}>
-              ID: {student.id} | Name: {student.name} | Marks: {student.marks}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+        <button onClick={handleAdd} className="bg-green-500 p-2 rounded">Add Student</button>
+        <button onClick={handleUpdate} className="bg-blue-500 p-2 rounded">Update Bala Marks</button>
+        <button onClick={handleDelete} className="bg-red-500 p-2 rounded"> Delete Kumar</button>
+        </div>
+    </>
+  )
 }
 
-export default App;
+export default App
+
+
+// p → Previous student array.
+// some() → Checks whether ID 4 already exists.
+// If ID exists → p (no duplicate).
+// Otherwise → [...p, newStudent] adds Priya.
+
+// map() checks every student.
+// // e.id === 2 → Finds Bala.
+// {...e, marks: 95} → Copies Bala's details and changes marks.
+// // : e → Other students remain unchanged.
+
+// filter() checks every student.
+// e.id !== 3 → Keeps everyone except Kumar.
+// Kumar is removed.
+
