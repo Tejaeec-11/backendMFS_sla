@@ -1,4 +1,4 @@
-
+//idu venam istead see videoexplain that is simple
 import { useEffect, useState } from "react";//useState – data store panna,useEffect – side effects handle panna.
 const App = () => {
 
@@ -8,26 +8,26 @@ const App = () => {
   const handleClick = () => {
     console.log("Running handleClick"); //Function call pannumbodhu console message print aagum.
   };
-  handleClick();//Component render aagumbodhu function execute aagum.
+  handleClick();              //Component render aagumbodhu function execute aagum.
 
-  // Mount-Type 1 – Empty dependency array []
+                             // Mount-Type 1 – Empty dependency array []
   useEffect(() => {
     console.log("Mounting");//Empty dependency array [] irukkuradhu nala initial mount-la effect run aagum.
   }, []);
 
-  // UpdateType 2 – Dependency [datas]
-  useEffect(() => {//datas value change aagumbodhu effect run aagum. Initial mount-layum run aagum.
+                               // UpdateType 2 – Dependency [datas]
+  useEffect(() => {            //datas value change aagumbodhu effect run aagum. Initial mount-layum run aagum.
     console.log("Updating");
   }, [datas]);
 
-  // Unmount
-  useEffect(() => {//Cleanup function. Component remove aagumbodhu execute aagum.
+                               // Unmount
+  useEffect(() => {            //Cleanup function. Component remove aagumbodhu execute aagum.
     return () => {
       console.log("Unmounting");
     };
   }, []);
 
-  // Without dependency arrayType 3 – No dependency array
+                                // Without dependency arrayType 3 – No dependency array
   useEffect(() => {
     console.log("Every render");//Dependency array illa. Every completed render-kum effect execute aagum.
   });

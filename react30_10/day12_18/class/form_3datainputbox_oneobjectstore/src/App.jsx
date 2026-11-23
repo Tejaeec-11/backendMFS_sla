@@ -1,5 +1,6 @@
+//code 2
 import { useState } from "react";
-//Updating an Object using the Spread Operator and Dynamic Property Names. afoformhandling code ***
+                      //Updating an Object using the Spread Operator and Dynamic Property Names. afoformhandling code ***
 const App = () => {
   const [obj,setObj] = useState({usertask:"",taskdate:"",status:""})//input
   const [saveData,setSaveData] = useState([])//submit,delte
@@ -7,7 +8,7 @@ const App = () => {
    
   const handleChange = (e)=>{//input 
     setObj({...obj,[e.target.name]:e.target.value})//name indules usertask,date,status tagretname iruka value 
-   }//Important concept [e.target.name]:e.target.value is called a computed property name (dynamic property name).
+   }                                                //Important concept [e.target.name]:e.target.value is called a computed property name (dynamic property name).
 
  const handleAdd = (e)=>{//submit
    e.preventDefault()//sumbit apo reload agam iruka

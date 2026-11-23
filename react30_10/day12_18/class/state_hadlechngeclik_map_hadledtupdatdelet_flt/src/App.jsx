@@ -1,4 +1,4 @@
-//code stored only one task name.
+//code1 stored only one task name.
 import { use, useState } from "react";
 
 const App = () => {
@@ -7,22 +7,22 @@ const App = () => {
   const [savetask,setSaveTask] = useState([])//submit button
   const [editId,setEditId] = useState(null)//edit
 
-  //input button
+                              //input button
   const handleChange = (e)=>{
     setTask(e.target.value)
   }
 
-  //sumbit button
+                              //sumbit button
   const handleClick = ()=>{
-    if(!task) { //when user click not task type alert show 
+    if(!task) {                 //when user click not task type alert show 
       alert("Please fill the Input")
       return
-    } //after if new add panna athu prev oda copy panni + new task print pannu 
+    }                                   //after if new add panna athu prev oda copy panni + new task print pannu 
      setSaveTask((p)=>[...p,task])
-    setTask("")//after print or submit aprm ma empty agum input box
+    setTask("")                         //after print or submit aprm ma empty agum input box
    }
 
-  //handle edit aprm next update then delete
+                                         //handle edit aprm next update then delete
   const handleEdit = (element,eid) => {
     setTask(element)
     setEditId(eid)
@@ -32,10 +32,10 @@ const App = () => {
     setSaveTask((p)=>[...p].filter((e,i)=>i!==userid))
      }
 
-  //submit button
+                                //submit button
   const handleUpdate = ()=>{
     setSaveTask((p)=>[...p].map((e,i)=>i==editId?task:e))
-    setTask("")//after empty i/p
+    setTask("")                  //after empty i/p
     setEditId(null)
   }
 
@@ -46,7 +46,7 @@ const App = () => {
         {editId==null?<button onClick={handleClick}>Add Task</button>:<button onClick={handleUpdate}>Update Task</button>}
       </div>
 
-      <div>   {/* ida code for show in screen after sumbit table show panna  */}
+      <div>                                                       {/* ida code for show in screen after sumbit table show panna  */}
         <table border={"3"}>
           <thead><tr><th>S.no</th><th>Task Name</th><th>Action</th></tr></thead>
           <tbody>

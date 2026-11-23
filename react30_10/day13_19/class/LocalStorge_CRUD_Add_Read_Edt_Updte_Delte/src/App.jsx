@@ -1,4 +1,4 @@
-
+//2 idu data localstorage save panan locak storage is sideeffect so we use useeffect  ida code imporatant *******************form aprm login useing this 
 import { useEffect, useState } from "react";
 
 const App = () => {
@@ -13,14 +13,16 @@ const App = () => {
   };
 
   // Add data
-  const handleClick = () => {
+  const handleClick = () => {//this 6 line imporatant to insert
+   // this for explain let getLocalData =localStorage.getItem("sladb") epdi pota athu text so for local storgae we need json change if prev value illana [empty array]
     let getLocalData = JSON.parse(localStorage.getItem("sladb")) || [];
       getLocalData.push(mydatas);//push() adds the current form data to the array.
+      //kela line local storage data end panna slabd so then array of it wont take so we string then it push it to browser local storage
      localStorage.setItem("sladb",JSON.stringify(getLocalData));
      alert("Successfully Done");
-
-    setMyDatas({username: "",useremail: "",userage: ""});
-     getDatas();
+    //idu browser name local username so username ui ena type pannalaum it store in username mattutha store agum not in useremail or age
+    setMyDatas({username: "",useremail: "",userage: ""});//table head mari  idukula n no number data store pannalaa
+     getDatas();//ida line side effect so u can call here or  kela call pannala ida line  line 62 useffect call panni irukuom so loop aviod agum
   };
 
   // Read data
@@ -56,7 +58,7 @@ const App = () => {
    getDatas();
    };
 
-  // Initial data loading
+  // Initial data loading //idu add data line so kela useeffect ula call panni irukum so loop agadhu
   useEffect(() => {
     getDatas();
   }, []);

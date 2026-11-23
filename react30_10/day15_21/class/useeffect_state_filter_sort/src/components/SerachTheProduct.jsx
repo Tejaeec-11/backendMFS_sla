@@ -6,7 +6,7 @@ const SearchTheProduct = () => {
     const [search,setSearch] = useState("")//Stores the text entered in the search input,Initially empty string means no search text.
     const [category,setCategory] = useState("")//Stores the selected product category,Initially empty string means no category selected.
 
- const fetchTheProduct = async () => {//Creates an asynchronous function to fetch product data.
+ const fetchTheProduct = async ()  => {//Creates an asynchronous function to fetch product data.
    try {
         const res = await fetch("https://dummyjson.com/products")//Fetches product information from the API.
         const change = await res.json()//Converts the API response into JavaScript data.
