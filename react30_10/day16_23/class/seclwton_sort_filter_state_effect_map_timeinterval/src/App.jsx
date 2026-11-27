@@ -1,122 +1,121 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import Scaleton from "./components/Scaleton";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+ 
+const [showDatas,setShowDatas] = useState([])
+const [loading,setLoading] = useState(true)
+const [sort,setSort] = useState("")
+const [search,setSearch] = useState("")
+const [cat,setCat] = useState("")
+
+  const fetchProduct = async() => {
+   try {
+      const res = await fetch("https://dummyjson.com/products?limit=6");
+      const getDatas = await res.json()
+      setShowDatas(getDatas.products)
+      setTimeout(()=>{
+        setLoading(false)
+      },5000)
+      } 
+      catch (error) {
+      console.log('Error',error);
+      }
+    }; 
+   useEffect(()=>{
+   fetchProduct()
+   },[])
+   let copy = [...showDatas]
+  
+   const handleChange = (e)=>{
+   setSort(e.target.value)
+   }
+   if(sort==="high") {
+   copy =  copy.sort((a,b)=>a.price-b.price)
+   console.log(copy);
+   }
+   if(sort==="low") {
+   copy = copy.sort((a,b)=>b.price-a.price)
+   console.log(copy);
+   }
+  
+   const handleSearch = (e) => {
+   setSearch(e.target.value)
+   };
+   if(search){
+    copy = copy.filter((e,i)=>e.title.toLowerCase().includes(search.toLowerCase()))
+  }
+  const duplicateremove = [...new Set(showDatas.map((e,i)=>e.category))] 
+  //console.log(duplicateremove);
+  
+  
+  const handleCat = (e)=>{
+  setCat(e.target.value)
+  }
+  if(cat){
+    copy = copy.filter((e,i)=>e.category==cat)
+  }
+
+  const handlePrice = (pricebyten)=>{
+  copy = copy.filter((e,i)=>Number(e.price)>pricebyten)
+   setShowDatas(copy)
+   }
+
+  const handleTotal = ()=>{
+  let copys = [...showDatas]
+  copys.reduce((a,c)=>{a+c.price},0)
+  console.log(copys);
+  }
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div>
+      <select onChange={handleChange}>
+        <option value="">Select One..</option>
+        <option value="high">Low to High</option>
+        <option value="low">High to Low</option>
+      </select>
+      <button onClick={()=>handlePrice(10)}>Above 10</button>
+      <select onChange={handleCat}>
+        <option value="">Select One..</option>
+        {duplicateremove.map((e,i)=>(
+          <option value={e} key={e}>{e}</option>
+        ))}
+      </select>
+      <input type="text" placeholder="Serach by name.." onChange={handleSearch} />
+    </div>
+      <div className="flex gap-20 p-10 justify-center flex-wrap">
+        {loading?<Scaleton/>:copy.length===0?<p>No Datas Found</p>:copy.map((e,i)=>(
 
-      <div className="ticks"></div>
+          <div className="w-72  rounded-lg  border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800" key={i}>
+      {/* Product Image Placeholder */}
+      <div className="mb-4 h-44 w-full rounded-md ">
+      <img src={e.thumbnail} alt={e.title} />
+      </div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      {/* Category / Badge Placeholder */}
+      <div className="mb-2 h-3 w-1/4 rounded ">{e.category}</div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      {/* Product Title Placeholder */}
+      <div className="mb-2 h-20 w-3/4 rounded ">{e.title}</div>
+
+      {/* Description Lines Placeholder */}
+      {/* <div className="mb-4 space-y-2">
+        <div className="h-3 w-full rounded "></div>
+        <div className="h-3 w-5/6 rounded "></div>
+      </div> */}
+
+      {/* Price & Button Placeholder */}
+      <div className="flex items-center justify-between pt-2">
+        <div className="h-6 w-16 rounded ">{e.price}</div>
+        <div className="h-9 w-24 rounded-md "><button>Add to Cart</button></div>
+      </div>
+    </div>
+
+        ))}
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
